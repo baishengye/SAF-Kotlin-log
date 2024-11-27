@@ -12,8 +12,8 @@ android {
 
     defaultConfig {
         applicationId "cn.salesuite.saf.kotlin"
-        minSdkVersion cfg.minSdk
-        targetSdkVersion cfg.targetSdk
+        minSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
