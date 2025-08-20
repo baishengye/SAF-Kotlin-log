@@ -23,6 +23,7 @@ object L {
     private var displayThreadInfo:Boolean  = true
     private var displayClassInfo:Boolean   = true
     private var converter: Converter?=null
+    private var methodNameGet:((formatter: Formatter = BorderFormatter)-> String)? = null
 
     init {
         printers.add(LogcatPrinter()) // 默认添加 LogcatPrinter
@@ -162,6 +163,13 @@ object L {
         return this
     }
 
+    /**
+     * 自定义方法名获取*/
+    fun customMethodNameGet(methodNameGet:((formatter: Formatter = BorderFormatter)-> String)?): L {
+        this.methodNameGet = methodNameGet
+        return this
+    }
+
     /******************* L 的配置方法 End *******************/
 
     /******************* L 提供打印的方法 Start *******************/
@@ -242,6 +250,10 @@ object L {
     @JvmStatic
     @JvmOverloads
     fun getMethodNames(formatter: Formatter = BorderFormatter): String {
+        if(methodNameGet != null){
+            return methodNameGet!!.invoke(formatter)
+        }
+
 
         val sElements = Thread.currentThread().stackTrace
 
