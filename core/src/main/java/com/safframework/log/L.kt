@@ -23,7 +23,7 @@ object L {
     private var displayThreadInfo:Boolean  = true
     private var displayClassInfo:Boolean   = true
     private var converter: Converter?=null
-    private var methodNameGet:((formatter: Formatter = BorderFormatter)-> String)? = null
+    private var methodNameGet:((formatter: Formatter)-> String)? = null
 
     init {
         printers.add(LogcatPrinter()) // 默认添加 LogcatPrinter
@@ -165,7 +165,7 @@ object L {
 
     /**
      * 自定义方法名获取*/
-    fun customMethodNameGet(methodNameGet:((formatter: Formatter = BorderFormatter)-> String)?): L {
+    fun customMethodNameGet(methodNameGet:((formatter: Formatter)-> String)?): L {
         this.methodNameGet = methodNameGet
         return this
     }
