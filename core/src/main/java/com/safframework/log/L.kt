@@ -16,12 +16,15 @@ import java.util.*
 object L {
 
     private var TAG = "SAF_L"
-    private var header: String? = ""
-    private val handlers = LinkedList<BaseHandler>()
-    private var firstHandler: BaseHandler
+    var header: String? = ""
+        private set
+    private  val handlers = LinkedList<BaseHandler>()
+    var firstHandler: BaseHandler
     private val printers = Collections.synchronizedSet(mutableSetOf<Printer>())
-    private var displayThreadInfo:Boolean  = true
-    private var displayClassInfo:Boolean   = true
+    var displayThreadInfo:Boolean  = true
+        private set
+    var displayClassInfo:Boolean   = true
+        private set
     private var converter: Converter?=null
     private var methodNameGet:((formatter: Formatter)-> String)? = null
 
